@@ -4,17 +4,25 @@ from typing import List, Optional
 
 
 # -------------------------
-# SIGN IN
+# EMAIL LOGIN
 # -------------------------
 
-class SignInRequest(BaseModel):
+class LoginRequest(BaseModel):
     email: EmailStr
-    password: Optional[str] = None
-    google_token: Optional[str] = None
+    password: str
 
 
 # -------------------------
-# SIGN UP STEP 1
+# SOCIAL LOGIN
+# -------------------------
+
+class SocialLoginRequest(BaseModel):
+    provider: str  # google | apple | facebook
+    token: str
+
+
+# -------------------------
+# SIGNUP STEP 1
 # -------------------------
 
 class SignUpRequest(BaseModel):
@@ -33,11 +41,10 @@ class SignUpRequest(BaseModel):
     date_of_birth: date
 
     password: Optional[str] = None
-    google_token: Optional[str] = None
 
 
 # -------------------------
-# SIGN UP STEP 2 (Family)
+# FAMILY INFO
 # -------------------------
 
 class FamilyInfoRequest(BaseModel):
@@ -51,7 +58,6 @@ class FamilyInfoRequest(BaseModel):
     family_space_name: str
 
     priorities: List[str]
-    # ["Saving Money", "Staying Organized", "Sharing Memories", "Staying Connected"]
 
 
 # -------------------------
@@ -65,29 +71,18 @@ class VerifyOTPRequest(BaseModel):
 
 
 # -------------------------
-# FORGOT PASSWORD STEP 1
+# FORGOT PASSWORD
 # -------------------------
 
 class ForgotPasswordRequest(BaseModel):
-
     email: EmailStr
 
 
-# -------------------------
-# FORGOT PASSWORD STEP 2
-# -------------------------
-
 class VerifyResetOTPRequest(BaseModel):
-
     email: EmailStr
     otp: str
 
 
-# -------------------------
-# FORGOT PASSWORD STEP 3
-# -------------------------
-
 class ResetPasswordRequest(BaseModel):
-
     email: EmailStr
     new_password: str

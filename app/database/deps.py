@@ -1,4 +1,4 @@
-from app.database.connection import SessionLocal
+from app.database.session import SessionLocal
 
 
 def get_db():
@@ -7,6 +7,5 @@ def get_db():
 
     try:
         yield db
-
     finally:
         db.close()
