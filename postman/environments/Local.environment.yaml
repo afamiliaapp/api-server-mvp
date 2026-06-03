@@ -1,2 +1,5 @@
 name: Local
-values: []
+values:
+  - key: base_url
+    value: ''
+color: 0
